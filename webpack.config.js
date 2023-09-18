@@ -27,21 +27,18 @@ const babelLoaderConfiguration = {
       // Re-write paths to import only the modules needed by the app
       plugins: ['react-native-web'],
     },
-  },     
+  },
 };
-
-const tmp = { test: /.(js|jsx)/, 
-   loader: "babel-loader", exclude: /node_modules/ }
 
 // This is needed for webpack to import static images in JavaScript files.
 const imageLoaderConfiguration = {
-  test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+  test: /\.(png|svg|jpg|jpeg|gif|ico|pdf)$/,
   type: 'asset/resource',
 };
 
 module.exports = {
   // load any web API polyfills
-  entry:{
+  entry: {
     app: path.resolve(appDirectory, 'index.web.js')
   },
 
@@ -54,7 +51,10 @@ module.exports = {
   // ...the rest of your config
 
   module: {
-    rules: [imageLoaderConfiguration, babelLoaderConfiguration], 
+    rules: [imageLoaderConfiguration, babelLoaderConfiguration, {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }],
   },
 
   resolve: {
@@ -69,7 +69,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: appDirectory + '/public/index.html',
+      template: appDirectory + '/index.html',
     }),
   ],
 };

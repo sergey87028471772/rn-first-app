@@ -2,6 +2,16 @@
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "module": "es2022",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "baseUrl": "src/",
+    "paths": {
+      "~/0_app/*": ["0_app/*"],
+      "~/1_pages/*": ["1_pages/*"],
+      "~/2_widgets/*": ["2_widgets/*"],
+      "~/3_features/*": ["3_features/*"],
+      "~/4_entities/*": ["4_entities/*"],
+      "~/5_shared/*": ["5_shared/*"],
+    }
   },
+  
 }

@@ -61,11 +61,12 @@ module.exports = {
     // This will only alias the exact import "react-native"
     alias: {
       'react-native$': 'react-native-web',
+      '~': path.resolve(__dirname, 'src'),
     },
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
-    extensions: ['.web.js', '.js', '.tsx'],
+    extensions: ['.web.js', '.js', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,11 +1,6 @@
 import {Button} from 'react-native';
 
-type ButtonProps = {
-  title?: string;
-  color?: string;
-};
-
-export function RNButton(props: ButtonProps) {
+export function RNButton(props: React.ComponentProps<typeof Button>) {
   const {title = 'button', color = 'primary', ...other} = props;
 
   return <Button title={title} color={color} {...other} />;

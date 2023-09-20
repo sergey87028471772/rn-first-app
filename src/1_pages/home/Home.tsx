@@ -1,11 +1,19 @@
+import {useState} from 'react';
+import {View} from 'react-native';
 import {Header} from '~/2_widgets/header';
+import {Reader} from '~/2_widgets/reader';
 
-type HomeProps = {
-  auth?: boolean;
-};
+export function Home() {
+  const [data, setData] = useState<string | ArrayBuffer | undefined>();
 
-export function Home(props: HomeProps) {
-  const {auth} = props;
-
-  return <Header />;
+  return (
+    <View>
+      <Header
+        setPdfData={(newData: string | ArrayBuffer | undefined) =>
+          setData(newData)
+        }
+      />
+      <Reader data={data} />
+    </View>
+  );
 }

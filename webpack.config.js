@@ -10,7 +10,7 @@ const { presets } = require(`${appDirectory}/babel.config.js`);
 // errors. To fix this webpack can be configured to compile to the necessary
 // `node_module`.
 const babelLoaderConfiguration = {
-  test: /.(js|jsx|tsx)/,
+  test: /.(js|jsx|ts|tsx)/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(appDirectory, 'index.web.js'),
@@ -36,6 +36,12 @@ const imageLoaderConfiguration = {
   type: 'asset/resource',
 };
 
+// CSS loader
+const cssLoaderConfiguration = {
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader']
+};
+
 module.exports = {
   // load any web API polyfills
   entry: {
@@ -51,10 +57,7 @@ module.exports = {
   // ...the rest of your config
 
   module: {
-    rules: [imageLoaderConfiguration, babelLoaderConfiguration, {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
-    }],
+    rules: [imageLoaderConfiguration, babelLoaderConfiguration, cssLoaderConfiguration],
   },
 
   resolve: {

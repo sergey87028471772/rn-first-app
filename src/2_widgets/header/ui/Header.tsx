@@ -1,10 +1,16 @@
 import {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
+import {addFileAction} from '~/3_features/file';
+import {FileUploader} from '~/4_entities/file';
 import {RNButton, RNIcon} from '~/5_shared/ui';
 import {getMainIconBase64} from '~/5_shared/lib/icons';
-import {FileUploader} from '~/4_entities/file';
 
-export function Header() {
+type HeaderProps = {
+  setPdfData: (newData: string | ArrayBuffer | undefined) => void;
+};
+
+export function Header(props: HeaderProps) {
+  const {setPdfData} = props;
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -26,6 +32,10 @@ export function Header() {
       <FileUploader
         isOpen={modalVisible}
         onClose={() => setModalVisible(false)}
+        onChange={e => {
+          addFileAction({event: e, setPdfData});
+          setModalVisible(false);
+        }}
       />
     </View>
   );

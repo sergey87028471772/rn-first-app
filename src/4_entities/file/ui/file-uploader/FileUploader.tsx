@@ -4,10 +4,11 @@ import {RNButton, RNModal, WebFilePicker} from '~/5_shared/ui';
 type FileUploaderProps = {
   isOpen: boolean;
   onClose: () => void;
+  onChange: (e: React.ChangeEvent) => void;
 };
 
 export function FileUploader(props: FileUploaderProps) {
-  const {isOpen, onClose} = props;
+  const {isOpen, onClose, onChange} = props;
 
   if (Platform.OS === 'web') {
     console.log('web');
@@ -15,7 +16,7 @@ export function FileUploader(props: FileUploaderProps) {
 
   return (
     <RNModal isOpen={isOpen} onClose={onClose}>
-      {Platform.OS === 'web' ? <WebFilePicker /> : null}
+      {Platform.OS === 'web' ? <WebFilePicker onChange={onChange} /> : null}
       <RNButton title="Отмена" color="#3667c9" onPress={onClose} />
     </RNModal>
   );

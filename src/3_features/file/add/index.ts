@@ -1,1 +1,1 @@
-export {AddFileButton} from './ui/add-file-button/AddFileButton';
+export {addFileAction} from './model/addFile';

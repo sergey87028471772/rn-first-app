@@ -1,5 +1,6 @@
 import {Platform} from 'react-native';
-import {RNButton, RNModal, WebFilePicker} from '~/5_shared/ui';
+import {RNButton, RNModal} from '~/5_shared/ui/rn';
+import {WebFilePicker} from '~/5_shared/ui/web';
 
 type FileUploaderProps = {
   isOpen: boolean;

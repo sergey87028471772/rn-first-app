@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   presets: [
   //.... Your current configuration, Check your configs carefully for this file
@@ -18,6 +20,8 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties', {loose: true}],
     ['@babel/plugin-proposal-private-methods', {loose: true}],
     ['@babel/plugin-proposal-private-property-in-object', {loose: true}],
-    '@babel/plugin-transform-runtime'
+    // 'react-native-classname-to-style',
+    // ['react-native-platform-specific-extensions', { extensions: ['css'] }],
+    '@babel/plugin-transform-runtime',
   ],
 };

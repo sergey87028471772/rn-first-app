@@ -1,10 +1,10 @@
 type AddFileActionProps = {
   event: React.ChangeEvent;
-  setPdfData: (newData: string | ArrayBuffer | undefined) => void;
+  setData: (newData: string | ArrayBuffer | null) => void;
 };
 
 export function addFileAction(props: AddFileActionProps) {
-  const {event, setPdfData} = props;
+  const {event, setData} = props;
   const target = event.target as any;
 
   const file = target.files[0];
@@ -14,6 +14,6 @@ export function addFileAction(props: AddFileActionProps) {
 
   reader.onloadend = () => {
     const base64Data = reader.result;
-    setPdfData(base64Data);
+    setData(base64Data);
   };
 }

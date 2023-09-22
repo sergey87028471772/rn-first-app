@@ -1,24 +1,25 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {addFileAction} from '~/3_features/file';
+import {PdfDocumentContext} from '~/4_entities/file';
 import {FileUploader} from '~/4_entities/file';
-import {RNButton, RNIcon} from '~/5_shared/ui';
+import {RNButton, RNIcon} from '~/5_shared/ui/rn';
 import {getMainIconBase64} from '~/5_shared/lib/icons';
 
-type HeaderProps = {
-  setPdfData: (newData: string | ArrayBuffer | undefined) => void;
-};
-
-export function Header(props: HeaderProps) {
-  const {setPdfData} = props;
+export function Header() {
   const [modalVisible, setModalVisible] = useState(false);
+  const {setData} = useContext(PdfDocumentContext);
 
   return (
     <View>
       <View style={styles.containerHeader}>
         <RNIcon uri={getMainIconBase64()} />
         <View style={styles.containerHeaderButtons}>
-          <RNButton title="Сбросить" color="#dd0c6b" />
+          <RNButton
+            title="Сбросить"
+            color="#dd0c6b"
+            onPress={() => setData(null)}
+          />
           <View style={styles.containerHeaderButtonsAdd}>
             <RNButton
               title="Добавить"
@@ -32,8 +33,8 @@ export function Header(props: HeaderProps) {
       <FileUploader
         isOpen={modalVisible}
         onClose={() => setModalVisible(false)}
-        onChange={e => {
-          addFileAction({event: e, setPdfData});
+        onChange={event => {
+          addFileAction({event, setData});
           setModalVisible(false);
         }}
       />

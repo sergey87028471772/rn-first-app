@@ -1,14 +1,13 @@
 import {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {addFileAction} from '~/3_features/file';
+import {addFileAction, FileUploader} from '~/3_features/file';
 import {PdfDocumentContext} from '~/4_entities/file';
-import {FileUploader} from '~/4_entities/file';
 import {RNButton, RNIcon} from '~/5_shared/ui/';
 import {getMainIconBase64} from '~/5_shared/lib/icons';
 
 export function Header() {
   const [modalVisible, setModalVisible] = useState(false);
-  const {setData} = useContext(PdfDocumentContext);
+  const {setWebData} = useContext(PdfDocumentContext);
 
   return (
     <View>
@@ -18,7 +17,7 @@ export function Header() {
           <RNButton
             title="Сбросить"
             color="#dd0c6b"
-            onPress={() => setData(null)}
+            onPress={() => setWebData(null)}
           />
           <View style={styles.containerHeaderButtonsAdd}>
             <RNButton
@@ -34,7 +33,7 @@ export function Header() {
         isOpen={modalVisible}
         onClose={() => setModalVisible(false)}
         onChange={event => {
-          addFileAction({event, setData});
+          addFileAction({event, setWebData});
           setModalVisible(false);
         }}
       />

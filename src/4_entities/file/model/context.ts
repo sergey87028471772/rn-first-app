@@ -1,11 +1,18 @@
 import {createContext} from 'react';
+import {DocumentPickerResponse} from 'react-native-document-picker';
 
 type PdfDocumentContextType = {
-  data: string | ArrayBuffer | null;
-  setData: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null>>;
+  rnData: Array<DocumentPickerResponse>;
+  setRnData: React.Dispatch<
+    React.SetStateAction<Array<DocumentPickerResponse>>
+  >;
+  webData: string | ArrayBuffer | null;
+  setWebData: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null>>;
 };
 
 export const PdfDocumentContext = createContext<PdfDocumentContextType>({
-  data: null,
-  setData: () => {},
+  rnData: [],
+  setRnData: () => {},
+  webData: null,
+  setWebData: () => {},
 });

@@ -1,18 +1,19 @@
-import {Platform} from 'react-native';
 import {useState} from 'react';
 import {View} from 'react-native';
 import {Header} from '~/2_widgets/header';
-import {WebReader} from '~/2_widgets/reader/ui';
+import {Reader} from '~/2_widgets/reader/';
 import {PdfDocumentContext} from '~/4_entities/file';
 
 export function Home() {
-  const [data, setData] = useState<string | ArrayBuffer | null>(null);
+  const [rnData, setRnData] = useState<any>([]);
+  const [webData, setWebData] = useState<any>();
 
   return (
-    <PdfDocumentContext.Provider value={{data, setData}}>
+    <PdfDocumentContext.Provider
+      value={{rnData, setRnData, webData, setWebData}}>
       <View>
         <Header />
-        {Platform.OS === 'web' ? <WebReader /> : null}
+        <Reader />
       </View>
     </PdfDocumentContext.Provider>
   );

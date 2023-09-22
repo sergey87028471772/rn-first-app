@@ -10,10 +10,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 type PdfReaderProps = {
-  data: string | ArrayBuffer | undefined;
+  data: string | ArrayBuffer | null;
 };
 
-export function PdfReader(props: PdfReaderProps) {
+export function WebPdfReader(props: PdfReaderProps) {
   const {data = null} = props;
 
   const [numPages, setNumPages] = useState<number>(0);
@@ -26,7 +26,7 @@ export function PdfReader(props: PdfReaderProps) {
     const pages = [];
 
     for (let i = 0; i < numPages; i++) {
-      pages.push(<Page pageNumber={i + 1} />);
+      pages.push(<Page pageNumber={i + 1} key={i + 1} />);
     }
 
     return pages;

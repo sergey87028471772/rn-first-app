@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {addFileAction} from '~/3_features/file';
 import {PdfDocumentContext} from '~/4_entities/file';
 import {FileUploader} from '~/4_entities/file';
-import {RNButton, RNIcon} from '~/5_shared/ui/rn';
+import {RNButton, RNIcon} from '~/5_shared/ui/';
 import {getMainIconBase64} from '~/5_shared/lib/icons';
 
 export function Header() {

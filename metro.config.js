@@ -18,7 +18,7 @@ const config = {
     },
 
     resolveRequest: (context, moduleName, platform) => {
-      if (moduleName.includes('PdfReader')) {
+      if (moduleName.includes('/pdf-reader/_PdfReader')) {
         return {
           filePath: path.resolve(__dirname +  "/src/5_shared/config/import-plugs/WebPdfReader.tsx"),
           type: 'sourceFile',

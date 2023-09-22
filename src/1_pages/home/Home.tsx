@@ -2,7 +2,7 @@ import {Platform} from 'react-native';
 import {useState} from 'react';
 import {View} from 'react-native';
 import {Header} from '~/2_widgets/header';
-import {Reader as WebReader} from '~/2_widgets/reader/ui/web';
+import {WebReader} from '~/2_widgets/reader/ui';
 import {PdfDocumentContext} from '~/4_entities/file';
 
 export function Home() {

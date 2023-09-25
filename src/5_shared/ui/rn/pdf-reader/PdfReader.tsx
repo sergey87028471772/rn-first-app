@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import Pdf from 'react-native-pdf';
-import {DocumentPickerResponse} from 'react-native-document-picker';
 
 type PdfReaderProps = {
   data: Array<DocumentPickerResponse>;

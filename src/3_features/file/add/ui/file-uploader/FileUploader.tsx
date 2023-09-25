@@ -1,7 +1,4 @@
-import {useContext} from 'react';
 import {Platform} from 'react-native';
-import {DocumentPickerResponse} from 'react-native-document-picker';
-import {PdfDocumentContext} from '~/4_entities/file';
 import {RNButton, RNModal, RNFilePicker, WebFilePicker} from '~/5_shared/ui';
 
 type FileUploaderProps = {

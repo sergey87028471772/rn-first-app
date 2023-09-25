@@ -65,12 +65,15 @@ module.exports = {
     alias: {
       'react-native$': 'react-native-web',
       '~': path.resolve(__dirname, 'src'),
+      './rn/file-picker/FilePicker': path.resolve(__dirname + "/src/5_shared/config/import-plugs/RNFilePicker.tsx"),
+      './rn/pdf-reader/PdfReader': path.resolve(__dirname + "/src/5_shared/config/import-plugs/RNPdfReader.tsx")
     },
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
     extensions: ['.web.js', '.js', '.ts', '.tsx'],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: appDirectory + '/index.html',

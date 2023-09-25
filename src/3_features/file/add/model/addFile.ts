@@ -7,7 +7,7 @@ type AddFileContextType = {
 
 type AddFileActionProps = {
   event: React.ChangeEvent;
-  setWebData: (newData: string | ArrayBuffer | null) => void;
+  setWebData: (newData: WebData) => void;
 };
 
 export const AddFileContext = createContext<AddFileContextType>({

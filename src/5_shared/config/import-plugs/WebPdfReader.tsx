@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 
 type PdfReaderProps = {
-  data: string | ArrayBuffer | undefined;
+  data: WebData;
 };
 
 export function WebPdfReader(props: PdfReaderProps) {

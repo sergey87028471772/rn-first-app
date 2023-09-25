@@ -20,21 +20,21 @@ const config = {
     resolveRequest: (context, moduleName, platform) => {
       if (moduleName.includes('/web/pdf-reader/PdfReader')) {
         return {
-          filePath: path.resolve(__dirname +  "/src/5_shared/config/import-plugs/WebPdfReader.tsx"),
+          filePath: path.resolve(__dirname + "/src/5_shared/config/import-plugs/WebPdfReader.tsx"),
           type: 'sourceFile',
         };
       }
 
       if (moduleName.includes('react-pdf/dist/esm/Page/AnnotationLayer.css')) {
         return {
-          filePath: path.resolve(__dirname +  "/src/5_shared/config/import-plugs/AnnotationLayer.css"),
+          filePath: path.resolve(__dirname + "/src/5_shared/config/import-plugs/AnnotationLayer.css"),
           type: 'sourceFile',
         };
       }
 
       if (moduleName.includes('react-pdf/dist/esm/Page/TextLayer.css')) {
         return {
-          filePath: path.resolve(__dirname +  "/src/5_shared/config/import-plugs/TextLayer.css"),
+          filePath: path.resolve(__dirname + "/src/5_shared/config/import-plugs/TextLayer.css"),
           type: 'sourceFile',
         };
       }

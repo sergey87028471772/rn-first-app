@@ -1,5 +1,4 @@
 import {Button} from 'react-native';
-import {DocumentPickerResponse} from 'react-native-document-picker';
 import DocumentPicker, {
   isCancel,
   isInProgress,

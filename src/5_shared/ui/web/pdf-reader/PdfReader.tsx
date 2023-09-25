@@ -10,7 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 type PdfReaderProps = {
-  data: string | ArrayBuffer | null;
+  data: WebData;
 };
 
 export function WebPdfReader(props: PdfReaderProps) {

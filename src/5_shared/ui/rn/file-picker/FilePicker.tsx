@@ -6,11 +6,12 @@ import DocumentPicker, {
 } from 'react-native-document-picker';
 
 type RNFilePickerProps = {
+  title?: string;
   onChange: (newData: Array<DocumentPickerResponse>) => void;
 };
 
 export function RNFilePicker(props: RNFilePickerProps) {
-  const {onChange} = props;
+  const {title = 'Выберите PDF', onChange} = props;
 
   const handleError = (err: unknown) => {
     if (isCancel(err)) {
@@ -27,7 +28,7 @@ export function RNFilePicker(props: RNFilePickerProps) {
 
   return (
     <Button
-      title="open picker for single file selection"
+      title={title}
       onPress={async () => {
         DocumentPicker.pick({
           type: types.pdf,

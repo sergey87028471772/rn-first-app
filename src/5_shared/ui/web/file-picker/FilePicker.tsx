@@ -1,3 +1,5 @@
+import styles from './filePicker.module.css';
+
 type FilePickerProps = {
   title?: string;
   fileType?: string;
@@ -6,21 +8,23 @@ type FilePickerProps = {
 
 export function WebFilePicker(props: FilePickerProps) {
   const {
-    title = 'Выберите PDF:',
+    title = 'Выберите PDF',
     fileType = 'application/pdf',
     onChange,
   } = props;
 
   return (
-    <div>
-      <label htmlFor="file-picker">{title}</label>
-      <input
-        type="file"
-        id="file-picker"
-        name="file-picker"
-        accept={fileType}
-        onChange={e => onChange(e)}
-      />
+    <div className={styles.wrapper}>
+      <label className={styles['input-file']} htmlFor="file-picker">
+        <input
+          type="file"
+          id="file-picker"
+          name="file-picker"
+          accept={fileType}
+          onChange={e => onChange(e)}
+        />
+        <span>{title}</span>
+      </label>
     </div>
   );
 }

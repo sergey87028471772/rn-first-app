@@ -1,5 +1,6 @@
-import {Platform} from 'react-native';
+import {View, Platform} from 'react-native';
 import {RNButton, RNModal, RNFilePicker, WebFilePicker} from '~/5_shared/ui';
+import styles from './fileUploader.module.css';
 
 type FileUploaderProps = {
   isOpen: boolean;
@@ -14,11 +15,20 @@ export function FileUploader(props: FileUploaderProps) {
   return (
     <RNModal isOpen={isOpen} onClose={onClose}>
       {Platform.OS !== 'web' ? (
-        <RNFilePicker onChange={onChangeRN} />
+        <View>
+          <RNFilePicker onChange={onChangeRN} />
+          <View style={styles['close-button']}>
+            <RNButton title="Закрыть" color="#3667c9" onPress={onClose} />
+          </View>
+        </View>
       ) : (
-        <WebFilePicker onChange={onChangeWeb} />
+        <>
+          <WebFilePicker onChange={onChangeWeb} />
+          <div className={styles['close-button']}>
+            <RNButton title="Закрыть" color="#3667c9" onPress={onClose} />
+          </div>
+        </>
       )}
-      <RNButton title="Закрыть" color="#3667c9" onPress={onClose} />
     </RNModal>
   );
 }

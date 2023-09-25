@@ -18,6 +18,13 @@ const config = {
     },
 
     resolveRequest: (context, moduleName, platform) => {
+      if (moduleName.includes('/web/file-picker/FilePicker')) {
+        return {
+          filePath: path.resolve(__dirname + "/src/5_shared/config/import-plugs/WebFilePicker.tsx"),
+          type: 'sourceFile',
+        };
+      }
+
       if (moduleName.includes('/web/pdf-reader/PdfReader')) {
         return {
           filePath: path.resolve(__dirname + "/src/5_shared/config/import-plugs/WebPdfReader.tsx"),

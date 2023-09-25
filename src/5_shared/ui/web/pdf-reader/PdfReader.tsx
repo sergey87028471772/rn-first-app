@@ -33,10 +33,11 @@ export function WebPdfReader(props: PdfReaderProps) {
   };
 
   return (
-    <div>
-      <Document file={data} onLoadSuccess={onDocumentLoadSuccess}>
-        {getPages()}
-      </Document>
-    </div>
+    <Document
+      file={data}
+      onLoadSuccess={onDocumentLoadSuccess}
+      noData="Добавьте PDF">
+      {getPages()}
+    </Document>
   );
 }

@@ -20,8 +20,6 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties', {loose: true}],
     ['@babel/plugin-proposal-private-methods', {loose: true}],
     ['@babel/plugin-proposal-private-property-in-object', {loose: true}],
-    // 'react-native-classname-to-style',
-    // ['react-native-platform-specific-extensions', { extensions: ['css'] }],
     '@babel/plugin-transform-runtime',
   ],
 };

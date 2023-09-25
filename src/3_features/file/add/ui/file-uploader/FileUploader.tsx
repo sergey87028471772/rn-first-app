@@ -1,24 +1,25 @@
 import {useContext} from 'react';
 import {Platform} from 'react-native';
+import {DocumentPickerResponse} from 'react-native-document-picker';
 import {PdfDocumentContext} from '~/4_entities/file';
 import {RNButton, RNModal, RNFilePicker, WebFilePicker} from '~/5_shared/ui';
 
 type FileUploaderProps = {
   isOpen: boolean;
   onClose: () => void;
-  onChange: (e: React.ChangeEvent) => void;
+  onChangeRN: (newData: Array<DocumentPickerResponse>) => void;
+  onChangeWeb: (e: React.ChangeEvent) => void;
 };
 
 export function FileUploader(props: FileUploaderProps) {
-  const {isOpen, onClose, onChange} = props;
-  const {setRnData} = useContext(PdfDocumentContext);
+  const {isOpen, onClose, onChangeRN, onChangeWeb} = props;
 
   return (
     <RNModal isOpen={isOpen} onClose={onClose}>
       {Platform.OS !== 'web' ? (
-        <RNFilePicker onChange={setRnData} />
+        <RNFilePicker onChange={onChangeRN} />
       ) : (
-        <WebFilePicker onChange={onChange} />
+        <WebFilePicker onChange={onChangeWeb} />
       )}
       <RNButton title="Закрыть" color="#3667c9" onPress={onClose} />
     </RNModal>

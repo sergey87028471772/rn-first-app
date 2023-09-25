@@ -32,6 +32,7 @@ export function RNFilePicker(props: RNFilePickerProps) {
       onPress={async () => {
         DocumentPicker.pick({
           type: types.pdf,
+          copyTo: 'cachesDirectory',
         })
           .then(onChange)
           .catch(handleError);

@@ -1,13 +1,13 @@
-import {useState, useContext} from 'react';
+import {useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {addFileAction, FileUploader} from '~/3_features/file';
+import {AddFileContext, addFileAction, FileUploader} from '~/3_features/file';
 import {PdfDocumentContext} from '~/4_entities/file';
 import {RNButton, RNIcon} from '~/5_shared/ui/';
 import {getMainIconBase64} from '~/5_shared/lib/icons';
 
 export function Header() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const {setWebData} = useContext(PdfDocumentContext);
+  const {isOpen, setIsOpen} = useContext(AddFileContext);
+  const {setRnData, setWebData} = useContext(PdfDocumentContext);
 
   return (
     <View>
@@ -17,24 +17,31 @@ export function Header() {
           <RNButton
             title="Сбросить"
             color="#dd0c6b"
-            onPress={() => setWebData(null)}
+            onPress={() => {
+              setWebData(null);
+              setRnData([]);
+            }}
           />
           <View style={styles.containerHeaderButtonsAdd}>
             <RNButton
               title="Добавить"
               color="#0eb268"
-              onPress={() => setModalVisible(true)}
+              onPress={() => setIsOpen(true)}
             />
           </View>
         </View>
       </View>
 
       <FileUploader
-        isOpen={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onChange={event => {
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onChangeRN={newData => {
+          setRnData(newData);
+          setIsOpen(false);
+        }}
+        onChangeWeb={event => {
           addFileAction({event, setWebData});
-          setModalVisible(false);
+          setIsOpen(false);
         }}
       />
     </View>

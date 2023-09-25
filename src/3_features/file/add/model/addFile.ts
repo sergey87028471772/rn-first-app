@@ -1,7 +1,19 @@
+import {createContext} from 'react';
+
+type AddFileContextType = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 type AddFileActionProps = {
   event: React.ChangeEvent;
   setWebData: (newData: string | ArrayBuffer | null) => void;
 };
+
+export const AddFileContext = createContext<AddFileContextType>({
+  isOpen: false,
+  setIsOpen: () => {},
+});
 
 export function addFileAction(props: AddFileActionProps) {
   const {event, setWebData} = props;
